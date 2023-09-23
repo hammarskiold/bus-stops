@@ -1,10 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { useFetch } from "./hooks/useFetch";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { useStopsByBus } from "./hooks/useStopsByBus";
+
+const proxyUrl = import.meta.env.VITE_PROXY_URL;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  const stops = useFetch(`${proxyUrl}/stops`);
+  const journeys = useFetch(`${proxyUrl}/journeys`);
+
+  const stopsByBus = useStopsByBus(stops, journeys);
+
+  useEffect(() => {
+    if (stops && journeys) {
+    }
+  }, [stops, journeys]);
 
   return (
     <>
@@ -29,7 +43,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
