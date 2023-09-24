@@ -11,15 +11,17 @@ export const BusStopView = ({ stopsByLine }) => {
       {stopsByLine && (
         <>
           <Styled.Column>
-            {Object.keys(stopsByLine).map((line) => (
-              <BusLine
-                key={line}
-                line={line}
-                stops={stopsByLine[line]}
-                isSelected={selectedBusLine === line}
-                onClick={() => setSelectedBusLine(line)}
-              />
-            ))}
+            <Styled.BusLines>
+              {Object.keys(stopsByLine).map((line) => (
+                <BusLine
+                  key={line}
+                  line={line}
+                  stops={stopsByLine[line]}
+                  isSelected={selectedBusLine === line}
+                  onClick={() => setSelectedBusLine(line)}
+                />
+              ))}
+            </Styled.BusLines>
           </Styled.Column>
           <Styled.Column>
             <StopList stops={stopsByLine[selectedBusLine]} />

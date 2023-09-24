@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import { LoadingView } from "./views/loadingView/LoadingView";
 import * as Styled from "./App.styles";
+import background from "./assets/background.jpg";
 
 const proxyUrl = import.meta.env.VITE_PROXY_URL;
 
@@ -24,11 +25,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Styled.AppWrapper>
-        {isLoadingStops || isLoadingJourneys ? (
-          <LoadingView />
-        ) : (
-          <BusStopView stopsByLine={top10StopsByLine} />
-        )}
+        <Styled.BackgroundImage src={background} />
+        <Styled.Overlay />
+        <Styled.Content>
+          {isLoadingStops || isLoadingJourneys ? (
+            <LoadingView />
+          ) : (
+            <BusStopView stopsByLine={top10StopsByLine} />
+          )}
+        </Styled.Content>
       </Styled.AppWrapper>
     </ThemeProvider>
   );

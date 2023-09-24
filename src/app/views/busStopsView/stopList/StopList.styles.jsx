@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const StopListWrapper = styled.div`
   height: 80vh;
-  width: 20vw;
+  min-width: 14rem;
   overflow-y: auto;
-  background-color: black;
+  background-color: ${(p) => p.theme.colors.layout.depth1};
   padding: 1rem;
   box-sizing: border-box;
 `;

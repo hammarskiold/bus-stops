@@ -9,7 +9,6 @@ export const useFetch = (url) => {
       const response = await fetch(url);
       const _data = await response.json();
       setIsLoading(false);
-
       setData(_data?.ResponseData?.Result);
     })();
   }, []);
