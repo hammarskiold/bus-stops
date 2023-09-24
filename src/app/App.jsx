@@ -1,48 +1,36 @@
 import { useState, useEffect } from "react";
 import { useFetch } from "./hooks/useFetch";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { useStopsByBus } from "./hooks/useStopsByBus";
+import { getStopsByLine, getTop10StopsByLine } from "./App.logic";
+import { BusStopView } from "./views/busStopsView/busStopsView";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
+import { LoadingView } from "./views/loadingView/LoadingView";
+import * as Styled from "./App.styles";
 
 const proxyUrl = import.meta.env.VITE_PROXY_URL;
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const stops = useFetch(`${proxyUrl}/stops`);
-  const journeys = useFetch(`${proxyUrl}/journeys`);
-
-  const stopsByBus = useStopsByBus(stops, journeys);
+  const [top10StopsByLine, setTop10StopsByLine] = useState();
+  const [stops, isLoadingStops] = useFetch(`${proxyUrl}/stops`);
+  const [journeys, isLoadingJourneys] = useFetch(`${proxyUrl}/journeys`);
 
   useEffect(() => {
     if (stops && journeys) {
+      const stopsByLine = getStopsByLine(stops, journeys);
+      setTop10StopsByLine(getTop10StopsByLine(stopsByLine));
     }
   }, [stops, journeys]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ThemeProvider theme={theme}>
+      <Styled.AppWrapper>
+        {isLoadingStops || isLoadingJourneys ? (
+          <LoadingView />
+        ) : (
+          <BusStopView stopsByLine={top10StopsByLine} />
+        )}
+      </Styled.AppWrapper>
+    </ThemeProvider>
   );
 }
 

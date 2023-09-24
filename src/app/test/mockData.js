@@ -1,0 +1,123 @@
+export const stops = [
+  {
+    StopPointNumber: "1",
+    StopPointName: "Stop 1",
+    StopAreaNumber: "1",
+    LocationNorthingCoordinate: "59.3373571967995",
+    LocationEastingCoordinate: "18.0214674159693",
+    ZoneShortName: "A",
+    StopAreaTypeCode: "BUSTERM",
+    LastModifiedUtcDateTime: "2022-10-28 00:00:00.000",
+    ExistsFromDate: "2022-10-28 00:00:00.000",
+  },
+  {
+    StopPointNumber: "2",
+    StopPointName: "Stop 2",
+    StopAreaNumber: "2",
+    LocationNorthingCoordinate: "59.3361450073188",
+    LocationEastingCoordinate: "18.0222866342593",
+    ZoneShortName: "A",
+    StopAreaTypeCode: "BUSTERM",
+    LastModifiedUtcDateTime: "2015-09-24 00:00:00.000",
+    ExistsFromDate: "2015-09-24 00:00:00.000",
+  },
+  {
+    StopPointNumber: "3",
+    StopPointName: "Stop 3",
+    StopAreaNumber: "3",
+    LocationNorthingCoordinate: "59.336145007555",
+    LocationEastingCoordinate: "18.0222866347777",
+    ZoneShortName: "A",
+    StopAreaTypeCode: "BUSTERM",
+    LastModifiedUtcDateTime: "2015-09-24 00:00:00.000",
+    ExistsFromDate: "2015-09-24 00:00:00.000",
+  },
+  {
+    StopPointNumber: "4",
+    StopPointName: "Stop 4",
+    StopAreaNumber: "4",
+    LocationNorthingCoordinate: "59.336145001111",
+    LocationEastingCoordinate: "18.0222866348000",
+    ZoneShortName: "A",
+    StopAreaTypeCode: "BUSTERM",
+    LastModifiedUtcDateTime: "2015-09-24 00:00:00.000",
+    ExistsFromDate: "2015-09-24 00:00:00.000",
+  },
+];
+
+export const journeys = [
+  {
+    LineNumber: "1",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "1",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+  {
+    LineNumber: "1",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "2",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+  {
+    LineNumber: "2",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "1",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+  {
+    LineNumber: "2",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "3",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+  {
+    LineNumber: "2",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "4",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+];
+
+export const journeysWithDuplicates = [
+  {
+    LineNumber: "1",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "1",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+  {
+    LineNumber: "1",
+    DirectionCode: "1",
+    JourneyPatternPointNumber: "2",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+  {
+    LineNumber: "1",
+    DirectionCode: "2",
+    JourneyPatternPointNumber: "2",
+    LastModifiedUtcDateTime: "2022-02-15 00:00:00.000",
+    ExistsFromDate: "2022-02-15 00:00:00.000",
+  },
+];
+
+export const stopsByLine = {
+  1: [stops[0], stops[1]],
+  2: [stops[0], stops[1], stops[3]],
+  3: [stops[1], stops[2], stops[3]],
+  4: [stops[0], stops[3], stops[2]],
+  5: [stops[2], stops[3], stops[1]],
+  6: [stops[3], stops[2], stops[1]],
+  7: [stops[0], stops[3]],
+  8: [stops[0], stops[1], stops[2], stops[3]],
+  9: [stops[0], stops[1], stops[3]],
+  10: [stops[1], stops[2], stops[3]],
+  11: [stops[0], stops[3], stops[1]],
+  12: [stops[0], stops[2], stops[3]],
+};

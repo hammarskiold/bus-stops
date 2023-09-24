@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 
 const transportMode = "BUS";
-const apiKey = "b106f8ca9df24ac6a675eec7fbf2da67";
+const apiKey = "8fc1f11afbb84754b2fdabb090c62c26";
 const baseUrl = "https://api.sl.se/api2/LineData.json";
 
 const url = `${baseUrl}?DefaultTransportModeCode=${transportMode}&key=${apiKey}`;
