@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { flip } from "../../styles/animations";
 
-export const LoadingViewWrapper = styled.div``;
+export const LoadingViewWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const Loader = styled.div`
-  width: 6rem;
-  height: 6rem;
-  border: 8px solid ${(p) => p.theme.colors.primary.main};
-  border-radius: 50%;
+export const Loader = styled.img`
+  width: 8rem;
+  animation: ${flip} 10s linear infinite;
 `;
