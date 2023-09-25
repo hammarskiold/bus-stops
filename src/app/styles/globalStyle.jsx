@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    color: white;
+    color: ${(p) => p.theme.colors.layout.text};
   }
   body {
     margin: 0;
