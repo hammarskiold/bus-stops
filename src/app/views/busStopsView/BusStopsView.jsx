@@ -6,8 +6,6 @@ import { StopList } from "./stopList/StopList";
 export const BusStopView = ({ stopsByLine }) => {
   const [selectedBusLine, setSelectedBusLine] = useState();
 
-  console.log("SELECTED", selectedBusLine);
-
   return (
     <Styled.BusStopsViewWrapper>
       {stopsByLine && (

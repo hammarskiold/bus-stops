@@ -1,6 +1,6 @@
 import React from "react";
 import * as Styled from "./LoadingView.styles";
-import bus from "../../assets/bus.svg";
+import bus from "../../assets/icons/bus.svg";
 
 export const LoadingView = () => {
   return (

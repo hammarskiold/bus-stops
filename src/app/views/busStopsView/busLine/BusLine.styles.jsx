@@ -18,5 +18,3 @@ export const BusLineWrapper = styled.div`
     background-color: ${(p) => p.theme.colors.primary.higlight};
   }
 `;
-
-export const StopName = styled.div``;
