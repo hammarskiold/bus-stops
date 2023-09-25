@@ -1,3 +1,7 @@
+### Dependencies
+
+The application needs node js to run https://nodejs.org/en/download
+
 ### How to run
 
 Install dependencies using
