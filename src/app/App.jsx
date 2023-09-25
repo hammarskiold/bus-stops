@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useFetch } from "./hooks/useFetch";
 import { getStopsByLine, getTop10StopsByLine } from "./App.logic";
+import GlobalStyle from "./styles/globalStyle";
 import { BusStopView } from "./views/busStopsView/busStopsView";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Styled.AppWrapper>
         <Styled.BackgroundImage src={background} />
         <Styled.Overlay />

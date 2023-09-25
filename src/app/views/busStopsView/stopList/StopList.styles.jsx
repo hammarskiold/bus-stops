@@ -47,3 +47,11 @@ export const DirectionsHeader = styled.h2`
   box-sizing: border-box;
   box-shadow: -2px 12px 34px -22px rgba(0, 0, 0, 0.74);
 `;
+
+export const Placeholder = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

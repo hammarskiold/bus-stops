@@ -2,9 +2,10 @@ import { getStopsByLine, getTop10StopsByLine } from "./App.logic";
 import {
   stops,
   journeys,
-  journeysWithDuplicates,
+  journeysWithSameStopsDifferentDirection,
   stopsByLine,
   stopsByLineWithMoreDirections,
+  journeysWithSameStopsSameDirection,
 } from "./test/mockData";
 
 describe("BusStopsView", () => {
@@ -23,7 +24,10 @@ describe("BusStopsView", () => {
   });
 
   it("should split stops based on direction", () => {
-    const result = getStopsByLine(stops, journeysWithDuplicates);
+    const result = getStopsByLine(
+      stops,
+      journeysWithSameStopsDifferentDirection
+    );
 
     const line1Directions = result[1];
     const line1Direction1 = line1Directions[1];
@@ -32,6 +36,13 @@ describe("BusStopsView", () => {
     expect(Object.keys(line1Directions)).toHaveLength(2);
     expect(line1Direction1).toEqual([stops[0], stops[1]]);
     expect(line1Direction2).toEqual([stops[1]]);
+  });
+
+  it("should not add stops with the same name more than once on the same direction", () => {
+    const result = getStopsByLine(stops, journeysWithSameStopsSameDirection);
+    const line1Direction1 = result[1][1];
+
+    expect(line1Direction1).toEqual([stops[3]]);
   });
 
   it("should get the bus lines with the 10 most stops", () => {

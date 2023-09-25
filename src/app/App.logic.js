@@ -5,6 +5,10 @@ export const getStopsByLine = (stops, journeys) => {
       ({ StopPointNumber }) => StopPointNumber === JourneyPatternPointNumber
     );
 
+    if (!stop) {
+      return acc;
+    }
+
     if (!acc[LineNumber]) {
       acc[LineNumber] = {};
     }
@@ -12,18 +16,23 @@ export const getStopsByLine = (stops, journeys) => {
     if (!acc[LineNumber][DirectionCode]) {
       acc[LineNumber][DirectionCode] = [stop];
     } else {
-      acc[LineNumber][DirectionCode].push(stop);
+      if (
+        !acc[LineNumber][DirectionCode].some(
+          (s) => s.StopPointName === stop.StopPointName
+        )
+      ) {
+        acc[LineNumber][DirectionCode].push(stop);
+      }
     }
 
     return acc;
   }, {});
 };
-
 export const getTop10StopsByLine = (stopsByLine) => {
   const busLinesWithStopsCount = Object.entries(stopsByLine).map(
     ([lineNumber, directions]) => {
-      const direction1Stops = directions["1"] || [];
-      const direction2Stops = directions["2"] || [];
+      const direction1Stops = directions[1] || [];
+      const direction2Stops = directions[2] || [];
 
       const stopsCount = Math.max(
         direction1Stops.length,
