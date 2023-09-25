@@ -5,7 +5,8 @@ export const BusStopsViewWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 60vw;
-  min-width: 30rem;
+  min-width: 42rem;
+  max-width: 55rem;
   background-color: ${(p) => p.theme.colors.layout.depth0};
   border-radius: 1rem;
 `;

@@ -5,6 +5,7 @@ export const BusLineWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 3rem;
+  min-width: 8rem;
   width: 100%;
   padding: 0 1rem;
   background-color: ${(p) =>

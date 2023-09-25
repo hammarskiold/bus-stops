@@ -6,6 +6,8 @@ import { StopList } from "./stopList/StopList";
 export const BusStopView = ({ stopsByLine }) => {
   const [selectedBusLine, setSelectedBusLine] = useState();
 
+  console.log("SELECTED", selectedBusLine);
+
   return (
     <Styled.BusStopsViewWrapper>
       {stopsByLine && (
@@ -16,7 +18,7 @@ export const BusStopView = ({ stopsByLine }) => {
                 <BusLine
                   key={line}
                   line={line}
-                  stops={stopsByLine[line]}
+                  directions={stopsByLine[line]}
                   isSelected={selectedBusLine === line}
                   onClick={() => setSelectedBusLine(line)}
                 />
@@ -24,7 +26,7 @@ export const BusStopView = ({ stopsByLine }) => {
             </Styled.BusLines>
           </Styled.Column>
           <Styled.Column>
-            <StopList stops={stopsByLine[selectedBusLine]} />
+            <StopList directions={stopsByLine[selectedBusLine]} />
           </Styled.Column>
         </>
       )}

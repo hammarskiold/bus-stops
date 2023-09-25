@@ -1,25 +1,40 @@
 export const getStopsByLine = (stops, journeys) => {
   return journeys?.reduce((acc, journey) => {
-    const { LineNumber, JourneyPatternPointNumber } = journey;
+    const { LineNumber, JourneyPatternPointNumber, DirectionCode } = journey;
     const stop = stops.find(
       ({ StopPointNumber }) => StopPointNumber === JourneyPatternPointNumber
     );
-    if (Object.keys(acc).includes(LineNumber)) {
-      return {
-        ...acc,
-        [LineNumber]: [...acc[LineNumber], stop],
-      };
+
+    if (!acc[LineNumber]) {
+      acc[LineNumber] = {};
     }
-    return { ...acc, [LineNumber]: [stop] };
+
+    if (!acc[LineNumber][DirectionCode]) {
+      acc[LineNumber][DirectionCode] = [stop];
+    } else {
+      acc[LineNumber][DirectionCode].push(stop);
+    }
+
+    return acc;
   }, {});
 };
 
 export const getTop10StopsByLine = (stopsByLine) => {
   const busLinesWithStopsCount = Object.entries(stopsByLine).map(
-    ([lineNumber, stops]) => ({
-      lineNumber,
-      stopsCount: stops.length,
-    })
+    ([lineNumber, directions]) => {
+      const direction1Stops = directions["1"] || [];
+      const direction2Stops = directions["2"] || [];
+
+      const stopsCount = Math.max(
+        direction1Stops.length,
+        direction2Stops.length
+      );
+
+      return {
+        lineNumber,
+        stopsCount,
+      };
+    }
   );
 
   busLinesWithStopsCount.sort((a, b) => b.stopsCount - a.stopsCount);
