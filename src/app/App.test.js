@@ -4,26 +4,34 @@ import {
   journeys,
   journeysWithDuplicates,
   stopsByLine,
-} from "../test/mockData";
+} from "./test/mockData";
 
 describe("BusStopsView", () => {
   it("should get correct stops for a bus line", () => {
     const result = getStopsByLine(stops, journeys);
+    const line1Direction1 = result[1][1];
 
-    expect(result[1]).toEqual([stops[0], stops[1]]);
+    expect(line1Direction1).toEqual([stops[0], stops[1]]);
   });
 
   it("should get correct stops for another bus line", () => {
     const result = getStopsByLine(stops, journeys);
+    const line2Direction1 = result[2][1];
 
-    expect(result[2]).toEqual([stops[0], stops[2], stops[3]]);
+    expect(line2Direction1).toEqual([stops[0], stops[2], stops[3]]);
   });
 
-  //   it("should remove stop duplicates for a journey", () => {
-  //     const result = getStopsByLine(stops, journeysWithDuplicates);
+  it("should split stops based on direction", () => {
+    const result = getStopsByLine(stops, journeysWithDuplicates);
 
-  //     expect(result[1]).toEqual([stops[0], stops[1]]);
-  //   });
+    const line1Directions = result[1];
+    const line1Direction1 = line1Directions[1];
+    const line1Direction2 = line1Directions[2];
+
+    expect(Object.keys(line1Directions)).toHaveLength(2);
+    expect(line1Direction1).toEqual([stops[0], stops[1]]);
+    expect(line1Direction2).toEqual([stops[1]]);
+  });
 
   it("should get the bus lines with the 10 most stops", () => {
     const result = getTop10StopsByLine(stopsByLine);
