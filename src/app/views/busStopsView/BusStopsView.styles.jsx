@@ -21,4 +21,5 @@ export const BusLines = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 80vh;
+  max-height: 40rem;
 `;

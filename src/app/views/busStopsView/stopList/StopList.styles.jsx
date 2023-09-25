@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StopListWrapper = styled.div`
   height: 80vh;
+  max-height: 40rem;
   min-width: 14rem;
   width: 25rem;
   background-color: ${(p) => p.theme.colors.layout.depth1};
