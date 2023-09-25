@@ -108,16 +108,31 @@ export const journeysWithDuplicates = [
 ];
 
 export const stopsByLine = {
-  1: [stops[0], stops[1]],
-  2: [stops[0], stops[1], stops[3]],
-  3: [stops[1], stops[2], stops[3]],
-  4: [stops[0], stops[3], stops[2]],
-  5: [stops[2], stops[3], stops[1]],
-  6: [stops[3], stops[2], stops[1]],
-  7: [stops[0], stops[3]],
-  8: [stops[0], stops[1], stops[2], stops[3]],
-  9: [stops[0], stops[1], stops[3]],
-  10: [stops[1], stops[2], stops[3]],
-  11: [stops[0], stops[3], stops[1]],
-  12: [stops[0], stops[2], stops[3]],
+  1: { 1: [stops[0], stops[1]] },
+  2: { 1: [stops[0], stops[1], stops[3]] },
+  3: { 1: [stops[1], stops[2], stops[3]] },
+  4: { 1: [stops[0], stops[3], stops[2]] },
+  5: { 1: [stops[2], stops[3], stops[1]] },
+  6: { 1: [stops[3], stops[2], stops[1]] },
+  7: { 1: [stops[0], stops[3]] },
+  8: { 1: [stops[0], stops[1], stops[2], stops[3]] },
+  9: { 1: [stops[0], stops[1], stops[3]] },
+  10: { 1: [stops[1], stops[2], stops[3]] },
+  11: { 1: [stops[0], stops[3], stops[1]] },
+  12: { 1: [stops[0], stops[2], stops[3]] },
+};
+
+export const stopsByLineWithMoreDirections = {
+  1: { 1: [stops[0], stops[1]] },
+  2: { 1: [stops[0], stops[1], stops[3]] },
+  3: { 1: [stops[1], stops[2], stops[3]] },
+  4: { 1: [stops[0], stops[3], stops[2]] },
+  5: { 1: [stops[2], stops[3], stops[1]] },
+  6: { 1: [stops[3], stops[2], stops[1]] },
+  7: { 1: [stops[0]], 2: [stops[1]] },
+  8: { 1: [stops[0], stops[1], stops[2], stops[3]], 2: [stops[0]] },
+  9: { 1: [stops[0], stops[1], stops[3]] },
+  10: { 1: [stops[1], stops[2], stops[3]] },
+  11: { 1: [stops[0], stops[3], stops[1]] },
+  12: { 1: [stops[0], stops[2], stops[3]] },
 };

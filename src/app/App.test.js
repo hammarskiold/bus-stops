@@ -4,6 +4,7 @@ import {
   journeys,
   journeysWithDuplicates,
   stopsByLine,
+  stopsByLineWithMoreDirections,
 } from "./test/mockData";
 
 describe("BusStopsView", () => {
@@ -38,7 +39,17 @@ describe("BusStopsView", () => {
     const busLines = Object.keys(result);
 
     expect(busLines).toHaveLength(10);
-    expect(busLines.includes(1)).toBe(false);
-    expect(busLines.includes(7)).toBe(false);
+    expect(busLines.includes("1")).toBe(false);
+    expect(busLines.includes("7")).toBe(false);
+  });
+
+  it("should get the bus lines with the 10 most stops when there are more directions", () => {
+    const result = getTop10StopsByLine(stopsByLineWithMoreDirections);
+    const busLines = Object.keys(result);
+
+    expect(busLines).toHaveLength(10);
+    expect(busLines.includes("1")).toBe(false);
+    expect(busLines.includes("7")).toBe(false);
+    expect(busLines.includes("8")).toBe(true);
   });
 });
